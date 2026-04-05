@@ -1,11 +1,12 @@
+import BentoCard from "@/components/ui/BentoCard";
+import SectionLabel from "@/components/ui/SectionLabel";
+
 type LinkItem = { label: string; href: string };
 
 export default function LinksCard({ links }: { links: LinkItem[] }) {
   return (
-    <div className="bg-gray-900 rounded-2xl p-8 h-full flex flex-col">
-      <p className="text-xs text-gray-400 tracking-widest uppercase mb-6">
-        Contact
-      </p>
+    <BentoCard className="bg-gray-900 h-full flex flex-col">
+      <SectionLabel className="text-gray-400 mb-6">Contact</SectionLabel>
       <ul className="space-y-4 flex-1">
         {links.map((l) => (
           <li key={l.label}>
@@ -21,6 +22,6 @@ export default function LinksCard({ links }: { links: LinkItem[] }) {
           </li>
         ))}
       </ul>
-    </div>
+    </BentoCard>
   );
 }

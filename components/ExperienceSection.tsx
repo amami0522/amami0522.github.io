@@ -1,3 +1,6 @@
+import BentoCard from "@/components/ui/BentoCard";
+import SectionLabel from "@/components/ui/SectionLabel";
+
 type ExpItem = { period: string; role: string; company: string; desc: string };
 
 const styles = [
@@ -12,14 +15,10 @@ export default function ExperienceSection({
   experience: ExpItem[];
 }) {
   return (
-    <div className="col-span-12 bg-white rounded-2xl p-8">
-      <p className="text-xs text-gray-400 tracking-widest uppercase mb-8">
-        Experience
-      </p>
+    <BentoCard className="bg-white col-span-12">
+      <SectionLabel className="text-gray-400 mb-8">Experience</SectionLabel>
 
-      {/* Timeline */}
       <div className="relative pl-6">
-        {/* Vertical line */}
         <div className="absolute left-0 top-2 bottom-2 w-px bg-gray-100" />
 
         <div className="space-y-8">
@@ -27,19 +26,15 @@ export default function ExperienceSection({
             const s = styles[i] ?? styles[0];
             return (
               <div key={i} className="relative">
-                {/* Dot */}
                 <div
                   className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white"
                   style={{ backgroundColor: s.dot }}
                 />
-
-                {/* Period badge */}
                 <span
                   className={`inline-block text-xs px-2.5 py-0.5 rounded-full mb-2 ${s.tagBg} ${s.tagText}`}
                 >
                   {exp.period}
                 </span>
-
                 <p className="text-base font-semibold text-gray-900">
                   {exp.role}
                 </p>
@@ -52,6 +47,6 @@ export default function ExperienceSection({
           })}
         </div>
       </div>
-    </div>
+    </BentoCard>
   );
 }

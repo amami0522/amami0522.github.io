@@ -1,4 +1,6 @@
 import { skillColors } from "@/lib/data";
+import BentoCard from "@/components/ui/BentoCard";
+import SectionLabel from "@/components/ui/SectionLabel";
 
 type Skills = Record<string, string[]>;
 
@@ -17,13 +19,10 @@ export default function SkillsSection({ skills }: { skills: Skills }) {
       {entries.map(([cat, items], i) => {
         const c = skillColors[cat] ?? skillColors["Languages"];
         return (
-          <div
-            key={cat}
-            className={`${colSpans[i]} ${c.bg} rounded-2xl p-6`}
-          >
-            <p className={`text-xs font-semibold tracking-widest uppercase mb-4 ${c.accent}`}>
+          <BentoCard key={cat} className={`${colSpans[i]} ${c.bg}`}>
+            <SectionLabel className={`font-semibold ${c.accent} mb-4`}>
               {cat}
-            </p>
+            </SectionLabel>
             <div className="flex flex-wrap gap-2">
               {items.map((item) => (
                 <span
@@ -34,7 +33,7 @@ export default function SkillsSection({ skills }: { skills: Skills }) {
                 </span>
               ))}
             </div>
-          </div>
+          </BentoCard>
         );
       })}
     </>
